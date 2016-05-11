@@ -17,22 +17,15 @@
 			window.globalMenuTimeout = false,
 			dragging = false;
 			ul.hide();
+			a_withsub.addClass('test');
 
-			body.on('touchmove', function(){
-				dragging = true;
-				console.log('dragging.true');
-			});
-			
-			body.on('touchstart', function(){
-				dragging = false;
-				console.log('dragging.false');
-			});
+			body.on('touchmove', function(){ dragging = true;});
+			body.on('', function(){	dragging = false;});
 			
 			doc.on('click', closemenu);
 			obj.on('mouseleave', closemenu);
 			a_withsub.on('mouseenter', opensub);
 			a_withsub.on('touchend focus', closesub);
-			ul_sub.on('mouseenter', hoversub);
 		},
 		
 		closemenu = function(event){
@@ -60,26 +53,17 @@
 			if(e.type == 'touchend' &&  dragging == false || e.type == 'mouseenter') {
 				if ( $(this).hasClass('tapped') ){
 					var href = $(this).attr('href');
-					
 				} else {
-					obj.find('.tapped').next('ul').hide();
-					obj.find('.tapped').removeClass('tapped');
-					
+					$(this).parent().parent().find('.tapped').next('ul').hide();
+					$(this).parent().parent().find('.tapped').removeClass('tapped');
 					$(this).addClass('tapped');
 					$(this).next('ul').show();
-
 					e.stopImmediatePropagation();
 					e.preventDefault();
 				}
 			}
-		},	
-		
-		hoversub = function(){
-			window.clearTimeout(window.globalMenuTimeout);
 		};
 		
 		return this.each(init);
 	}
 })(jQuery);
-
-
