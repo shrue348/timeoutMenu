@@ -1,0 +1,19 @@
+ul { list-style: none;}
+.timeoutmenu { width: 200px; border-top: 1px solid #EFEFEF; }
+.timeoutmenu > li { border-right: 1px solid #EFEFEF; border-bottom: 1px solid #EFEFEF; border-left: 1px solid #EFEFEF; position: relative;}
+.timeoutmenu > li.active, .timeoutmenu > li.selected  { background-color: #F8F8F8;}
+.timeoutmenu > li a { color: #000; display: block; text-decoration: none; padding: 11px 33px 11px 10px; position: relative;}
+.timeoutmenu > li > span { color: #000; display: block; text-decoration: none; padding: 11px 33px 11px 10px; position: relative;}
+.timeoutmenu > li a > i { position: absolute; height: 20px; right: 3px; top: 0; bottom: 0; margin: auto;}
+.timeoutmenu > li a:hover { color: #3B90C9; background-color: #F8F8F8; }
+.timeoutmenu > li ul { position: absolute; left: 100%; top: -1px; display: none; border: 1px solid #efefef; background-color: #f8f8f8; width: 100%; z-index: 10;}
+.timeoutmenu > li > ul > li { border-bottom: 1px solid #ffffff; position: relative;}
+.timeoutmenu > li > ul > li a:hover { background-color: #f4f4f4; box-shadow: 0 0 1px #f8f8f8 inset;}
+.timeoutmenu > li > ul > li:last-child { border-bottom: none;}
+.timeoutmenu > li > ul > li > ul { column-count: 2; -moz-column-count: 2; -webkit-column-count: 2; width: 200%; column-fill: auto;  }
+.timeoutmenu > li > ul > li > ul > li {
+	display: block; 
+	-webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+}

@@ -1,7 +1,7 @@
 # jQuery timeoutMenu
 jQuery plugin emulate hover menu with touch events - timeoutMenu.js
 ==============
-
+<a href="http://codepen.io/shure348/pen/KzYvZG" target="_blank">DEMO on CodePen</a>
 
 ## Features
 
