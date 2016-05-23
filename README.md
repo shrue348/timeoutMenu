@@ -33,7 +33,8 @@ $(function() {
 ```html
 
 	<ul class="timeoutMenu"> 
-		<li><a href="#">Level 1</a>
+		<li>
+			<a href="#">Level 1</a>
 			<ul>
 				<li><a href="#">Level 2</a></li>
 				<li><a href="#">Level 2</a></li>
@@ -43,7 +44,8 @@ $(function() {
 				<li><a href="#">Level 2</a></li>
 			</ul>
 		</li>
-		<li><a href="#">Level 1</a>
+		<li>
+			<a href="#">Level 1</a>
 			<ul>
 				<li><a href="#">Level 2</a></li>
 				<li><a href="#">Level 2</a></li>
