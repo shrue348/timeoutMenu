@@ -1,4 +1,4 @@
-//timeoutMenu.js 0.1a https://github.com/shrue348/ Open source under the MIT License. Copyright © 2016 Aleksander Alekseev All rights reserved.
+//timeoutMenu.js 0.11a https://github.com/shrue348/ Open source under the MIT License. Copyright © 2016 Aleksander Alekseev All rights reserved.
 (function($) {
 	$.fn.timeoutMenu = function(options) {
 		var options = $.extend({
@@ -19,8 +19,20 @@
 			body.on('', function(){	dragging = false;});
 
 			a.on('mouseenter', a_hover);
+			a.on('mouseenter', function(){
+				$(this).parent().parent().find('.tapped').removeClass('tapped').next('ul').hide()
+			});
 			a.on('touchend', sub_open);
 			obj.on('mouseleave', menu_close);
+
+			$('body').on("touchmove", function(){ dragging = true;});
+			$('body').on("touchstart", function(){ dragging = false;});
+			$(document).on('click touchstart', function(event) {
+			   	if ($(event.target).closest(obj).length && dragging == false) return;
+
+			  	menu_close();
+			 	event.stopPropagation();
+			});
 		},
 
 		a_hover = function(){
@@ -31,19 +43,24 @@
 		},
 
 		sub_open = function(e){
-			if ( $(this).hasClass('tapped') ){
-				var href = $(this).attr('href');
+			if ($(this).next().is('ul')) {
+				if ( $(this).hasClass('tapped')){
+					var href = $(this).attr('href');
+				} else {
+					$(this).parent().parent().find('.tapped').removeClass('tapped').next('ul').hide();
+					$(this).addClass('tapped').next('ul').show();
+					e.stopImmediatePropagation();
+					e.preventDefault();
+				}
 			} else {
-				$(this).parent().parent().find('.tapped').removeClass('tapped').next('ul').hide();
-				$(this).addClass('tapped').next('ul').show();
-
-				e.stopImmediatePropagation();
-				e.preventDefault();
+				var href = $(this).attr('href');
 			}
+
+	
 		},
 		menu_close = function(){
 			clearTimeout(globalMenuTimeout);
-			globalMenuTimeout = setTimeout(function() 
+			globalMenuTimeout = setTimeout(function() {
 				obj.find('.tapped').removeClass('tapped').next('ul').hide();
 			}, options.delay);
 		};
